@@ -1,27 +1,20 @@
 import React from 'react'
+import TaskCard from './TaskCard'
 
 const TaskList = () => {
   return (
-    <div className='flex gap-5 shrink-0 overflow-x-auto items-center flex-nowrap justify-start h-[50%] w-full py-5 bg-red-700 mt-10'>
-      <div className="h-full w-75 bg-gray-400 rounded-2xl">
+    // Parent Container
+    <div id='taskList' className='flex flex-col lg:flex-row gap-5 w-full p-5  mt-10
+                    h-auto lg:h-[50%] 
+                    overflow-y-auto lg:overflow-x-auto 
+                    flex-wrap lg:flex-nowrap 
+                    items-center justify-start'>
+      
+     
+      <TaskCard/>
+      <TaskCard/>
+      <TaskCard/>
 
-      </div>
-
-      <div className="h-full w-75 bg-gray-400 rounded-2xl">
-        
-      </div>
-
-      <div className="h-full w-75 bg-gray-400 rounded-2xl">
-        
-      </div>
-
-      <div className="h-full w-75 bg-gray-400 rounded-2xl">
-        
-      </div>
-
-      <div className="h-full w-75 bg-gray-400 rounded-2xl">
-        
-      </div>
     </div>
   )
 }
