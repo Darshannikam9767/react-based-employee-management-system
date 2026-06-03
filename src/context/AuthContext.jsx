@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { createContext, useEffect } from 'react'
+import { getLocalStorage, setLocalStorage } from '../utils/localStorage'
+
+
+export const AuthProvider = createContext()
+
 
 const AuthContext = ({children}) => {
+
+  // useEffect(()=>{
+  //   setLocalStorage()
+  //   getLocalStorage()
+  // },)
   return (
     <>
-    {children}
+    <AuthProvider.Provider value={""}>
+      {children}
+    </AuthProvider.Provider>
     </>
   )
 }
