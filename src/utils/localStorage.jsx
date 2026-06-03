@@ -250,6 +250,6 @@ export const getLocalStorage = ()=>{
     
     const adminData = localStorage.getItem("admin")
     
-    return {empData,adminData}
+    return {emplyoees:empData,admin:adminData}
 
 }

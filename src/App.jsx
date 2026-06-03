@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
 import { getLocalStorage, setLocalStorage } from './utils/localStorage'
+import AuthWrapper, { AuthProvider } from './context/AuthContext'
 
 const App = () => {
 
   const [user, setUser] = useState(null)
 
+  // Save context to a variable so you can use it if needed
+  const authData = useContext(AuthProvider);
+  console.log(authData);
+  
 
   const handleLogin = (email,password)=>{
       if(email == "admin@gmail.com" && password == "password@123"){
