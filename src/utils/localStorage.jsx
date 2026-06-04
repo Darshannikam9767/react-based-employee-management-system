@@ -1,6 +1,8 @@
+
 const employees = [
   {
     id: 1,
+    name: "Rahul Sharma",
     email: "employee1@company.com",
     password: "pass123",
     tasks: [
@@ -12,7 +14,7 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Update Dashboard UI",
@@ -22,7 +24,7 @@ const employees = [
         active: true,
         newTask: false,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Write API Documentation",
@@ -32,13 +34,14 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
-      }
-    ]
+        failed: false,
+      },
+    ],
   },
 
   {
     id: 2,
+    name: "Priya Patel",
     email: "employee2@company.com",
     password: "pass123",
     tasks: [
@@ -50,7 +53,7 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Optimize Database Queries",
@@ -60,7 +63,7 @@ const employees = [
         active: true,
         newTask: false,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Fix Payment Gateway Error",
@@ -70,7 +73,7 @@ const employees = [
         active: false,
         newTask: false,
         completed: false,
-        failed: true
+        failed: true,
       },
       {
         taskTitle: "Code Review",
@@ -80,13 +83,14 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
-      }
-    ]
+        failed: false,
+      },
+    ],
   },
 
   {
     id: 3,
+    name: "Amit Verma",
     email: "employee3@company.com",
     password: "pass123",
     tasks: [
@@ -98,7 +102,7 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Deploy Staging Server",
@@ -108,7 +112,7 @@ const employees = [
         active: true,
         newTask: false,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Setup CI/CD Pipeline",
@@ -118,13 +122,14 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
-      }
-    ]
+        failed: false,
+      },
+    ],
   },
 
   {
     id: 4,
+    name: "Sneha Kulkarni",
     email: "employee4@company.com",
     password: "pass123",
     tasks: [
@@ -136,7 +141,7 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Cross Browser Testing",
@@ -146,7 +151,7 @@ const employees = [
         active: true,
         newTask: false,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Fix Responsive Issues",
@@ -156,7 +161,7 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Performance Audit",
@@ -166,13 +171,14 @@ const employees = [
         active: false,
         newTask: false,
         completed: false,
-        failed: true
-      }
-    ]
+        failed: true,
+      },
+    ],
   },
 
   {
     id: 5,
+    name: "Karan Mehta",
     email: "employee5@company.com",
     password: "pass123",
     tasks: [
@@ -184,7 +190,7 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Unit Testing",
@@ -194,7 +200,7 @@ const employees = [
         active: true,
         newTask: false,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Bug Fix Sprint",
@@ -204,7 +210,7 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Server Monitoring Setup",
@@ -214,7 +220,7 @@ const employees = [
         active: false,
         newTask: false,
         completed: false,
-        failed: true
+        failed: true,
       },
       {
         taskTitle: "Security Audit",
@@ -224,32 +230,45 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
-      }
-    ]
-  }
+        failed: false,
+      },
+    ],
+  },
 ];
+
+
 
 const admin = [
   {
     id: 1,
-    email: "admin@company.com",
+    name: "Darshan Nikam",
+    email: "darshannikam@gmail.com",
     password: "pass123"
   }
 ];
 
-export const setLocalStorage = () =>{
-  localStorage.setItem("employees",JSON.stringify(employees))
-  localStorage.setItem("admin",JSON.stringify(admin))  
+// localStorage.clear()
+
+export const setLocalStorage = () => {
+  localStorage.setItem("employees", JSON.stringify(employees))
+  localStorage.setItem("admin", JSON.stringify(admin))
 }
 
-export const getLocalStorage = ()=>{
-    const empData = localStorage.getItem("employees")
-    
-    
-    
-    const adminData = localStorage.getItem("admin")
-    
-    return {emplyoees:empData,admin:adminData}
+export const getLocalStorage = () => {
+  // 1. Get raw string data from localStorage
+  let empRaw = localStorage.getItem("employees")
+  let adminRaw = localStorage.getItem("admin")
 
+  // 2. If storage is empty, initialize it with your mock data arrays above
+  if (!empRaw || !adminRaw) {
+    setLocalStorage()
+    empRaw = localStorage.getItem("employees")
+    adminRaw = localStorage.getItem("admin")
+  }
+
+  // 3. Crucial Fix: Convert strings back into usable JS objects/arrays
+  const empData = JSON.parse(empRaw)
+  const adminData = JSON.parse(adminRaw)
+
+  return { empData, adminData }
 }
